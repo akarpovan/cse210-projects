@@ -14,6 +14,7 @@ class Program
         string prompt = "";
         string response = "";
         string date = "";
+        string status = "";
         while (option != option_quit)
         {
             Console.WriteLine("Please select one of the following options from menu:");
@@ -36,10 +37,17 @@ class Program
                     Console.WriteLine($"{prompt}");
                     Console.Write("Your response: ");
                     response = Console.ReadLine();
+                    
+                    // Save other information in the journal entry.
+                    Console.WriteLine($"Please enter the one status: Happy or Stressed or Completed or In Progress.");
+                    Console.Write("Your response: ");
+                    status = Console.ReadLine();
+
                     date = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
                     newEntry._dateCreated = date;
                     newEntry._prompt = prompt;
                     newEntry._response = response;
+                    newEntry._status = status;
                     journal.AddEntry(newEntry);
                     break;
                 case "2":

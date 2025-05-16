@@ -39,7 +39,7 @@ public class Journal
             {
                 foreach (var entry in _entries)
                 {
-                    entryString = $"{entry._dateCreated}|{entry._prompt}|{entry._response}";
+                    entryString = $"{entry._dateCreated}|{entry._prompt}|{entry._response}|{entry._status}";
                     outputFile.WriteLine(entryString);
                 }
             }
@@ -68,18 +68,19 @@ public class Journal
             {
                 Entry entry = new Entry();
                 var parts = line.Split('|');
-                if (parts.Length == 3)
+                if (parts.Length == 4)
                 {
                     entry._dateCreated = parts[0];
                     entry._prompt = parts[1];
                     entry._response = parts[2];
+                    entry._status = parts[3];
                 }
                 if (entry != null)
                     loadedEntries.Add(entry);
             }
             _entries = loadedEntries;
             Console.WriteLine("Journal loaded successfully.\n");
-        2
+        }
         catch (Exception ex)
         {
             Console.WriteLine($"Error loading file: {ex.Message}\n");
