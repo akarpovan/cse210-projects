@@ -11,6 +11,14 @@ public class Address
     {
     }
 
+    public Address(string address, string city, string state, string country)
+    {
+        _streetAddress = address;
+        _city = city;
+        _stateProvince = state;
+        _country = country;
+    }
+
     public string GetStreetAddress()
     {
         return _streetAddress;
@@ -50,29 +58,23 @@ public class Address
         _country = country;
     }
 
-    public Address(string address, string city, string state, string country)
+    public bool GetIndicatorUSA()
     {
-        _streetAddress = address;
-        _city = city;
-        _stateProvince = state;
-        _country = country;
-    }
-
-
-    public int GetIndicatorUSA()
-    {
+        bool indicatorUSA = false; //It's not from the USA
         //The address should have a method that can return whether it is in the USA or not.
-        int indicatorUSA = 0;
-
+        if (_country.ToUpper() == "USA" || _country.ToUpper() == "UNITED STATES")
+        {
+            indicatorUSA = true; //It's from the USA
+        }
         return indicatorUSA;
     }
 
-    public string DispĺayAddress(Address address)
+    public string GetDispĺayAddress()
     {
         //The address should have a method to return a string all of its fields together in one string 
         //(with newline characters where appropriate)
         string addr = "";
-        addr = $"{address._country}-{address._stateProvince}-{address._city}-{address._streetAddress}";
+        addr = $"{_streetAddress}\n{_city}, {_stateProvince}\n{_country}";
         return addr;
     }
 }

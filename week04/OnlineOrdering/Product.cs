@@ -59,12 +59,12 @@ public class Product
         _productQuantity = quantity;
     }
 
-    public double GetTotalCostOfProduct(Product product)
+    public double GetTotalCostOfProduct()
     {
         //The total cost of this product is computed by multiplying the price per unit and the quantity. 
         //(If the price per unit was $3 and they bought 5 of them, the product total cost would be $15.)
         double totalCostProduct = 0;
-        totalCostProduct = product._productPrice * product._productQuantity;
+        totalCostProduct = _productPrice * _productQuantity;
         return totalCostProduct;
     }
 

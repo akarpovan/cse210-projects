@@ -6,14 +6,13 @@ public class Customer
     private Address _customerAddress;
 
     public Customer()
-    { 
+    {
     }
 
-    public Customer(string customerName)
+    public Customer(string customerName, Address address)
     {
         _customerName = customerName;
-        //Initialize object
-        _customerAddress = new Address();
+        _customerAddress = address;
 
     }
 
@@ -26,10 +25,25 @@ public class Customer
     {
         _customerName = customerName;
     }
+    
+    public Address GetCustomerAddress()
+    {
+        return _customerAddress;
+    }
+
+    public void SetCustomerAddress(Address address)
+    {
+        _customerAddress = address;
+    }
 
 
     //The customer should have a method that can return whether they live in the USA or not. 
     //(Hint this should call a method on the address to find this.)
+
+    public bool LivesInUSA()
+    {
+        return _customerAddress.GetIndicatorUSA();
+    }
 
 
 }

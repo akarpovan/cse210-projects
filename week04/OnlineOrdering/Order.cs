@@ -2,55 +2,44 @@ using System;
 
 public class Order
 {
-    private string _packingLabel;
-    private string _shippingLabel;
-
     private List<Product> _products;
-    private List<Customer> _customers;
+    private Customer _customer;
 
     public Order()
     {
     }
 
-    public Order(string packingLabel, string shippingLabel)
+    public Order(Customer customer)
     {
-        _packingLabel = packingLabel;
-        _shippingLabel = shippingLabel;
+        _customer = customer;
         //Initialize list
         _products = new List<Product>();
-        _customers = new List<Customer>();
-
     }
 
-    public string GetPackingLabel()
+    public void AddProduct(Product product)
     {
-        return _packingLabel;
+        _products.Add(product);
     }
-
-    public string GetShippingLabel()
-    {
-        return _shippingLabel;
-    }
-
-    public void SetPackingLabel(string packingLabel)
-    {
-        _packingLabel = packingLabel;
-    }
-
-    public void SetShippingLabel(string shippingLabel)
-    {
-        _shippingLabel = shippingLabel;
-    }
-
 
     public double GetTotalCostOfOrder()
     {
         double totalCost = 0;
-        //pending to do
+        double productTotal = 0;
+
+        // Product costs
+        foreach (Product product in _products)
+        {
+            productTotal += product.GetTotalCostOfProduct();
+        }
+
+        // Shipping cost based on customer location
+        double shippingCost = _customer.LivesInUSA() ? 5.0 : 35.0;
+
+        totalCost = productTotal + shippingCost;
         return totalCost;
     }
 
-    public double GetTotalPrice()
+    /*public double GetTotalPrice()
     {
         //The total price is calculated as the sum of the total cost of each product plus a one-time shipping cost.
         double totalPrice = 0;
@@ -73,6 +62,21 @@ public class Order
         }
         return shippingCost;
 
+    }*/
+
+    public string GetPackingLabel()
+    {
+        string packingLabel = "Packing Label:\n";
+        foreach (var product in _products)
+            packingLabel += $"{product.GetProductName()} (ID: {product.GetProductId()})\n";
+        return packingLabel;
+    }
+
+    public string GetShippingLabel()
+    {
+        string shippingLabel = "Shipping Label:\n";
+        shippingLabel += $"{_customer.GetCustomerName()}\n{_customer.GetCustomerAddress().GetDispĺayAddress()}";
+        return shippingLabel;
     }
 
     /*public string GetPackingLabel(Product product)
@@ -86,5 +90,5 @@ public class Order
         //A shipping label should list the name and address of the customer.
         Console.WriteLine($"Customer name: {customer._name} - Customer address: {customer._address}");
     }*/
-    
+
 }
