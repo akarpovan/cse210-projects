@@ -2,25 +2,23 @@ using System;
 
 public class Order
 {
+    //Attributes
     private List<Product> _products;
     private Customer _customer;
 
-    public Order()
-    {
-    }
-
+    //Constructor   
     public Order(Customer customer)
     {
         _customer = customer;
         //Initialize list
         _products = new List<Product>();
     }
-
+    // Method
     public void AddProduct(Product product)
     {
         _products.Add(product);
     }
-
+    // Method
     public double GetTotalCostOfOrder()
     {
         double totalCost = 0;
@@ -38,32 +36,7 @@ public class Order
         totalCost = productTotal + shippingCost;
         return totalCost;
     }
-
-    /*public double GetTotalPrice()
-    {
-        //The total price is calculated as the sum of the total cost of each product plus a one-time shipping cost.
-        double totalPrice = 0;
-        //pending to do
-        return totalPrice;
-    }
-
-    public double GetShippingCost(int indicator)
-    {
-        double shippingCost = 0;
-        //This company is based in the USA. If the customer lives in the USA, then the shipping cost is $5. 
-        //If the customer does not live in the USA, then the shipping cost is $35.
-        if (indicator == 1) //the customer lives in the USA
-        {
-            shippingCost = 5;
-        }
-        else
-        {
-            shippingCost = 35;
-        }
-        return shippingCost;
-
-    }*/
-
+    // Method
     public string GetPackingLabel()
     {
         string packingLabel = "Packing Label:\n";
@@ -71,24 +44,20 @@ public class Order
             packingLabel += $"{product.GetProductName()} (ID: {product.GetProductId()})\n";
         return packingLabel;
     }
-
+    // Method
     public string GetShippingLabel()
     {
         string shippingLabel = "Shipping Label:\n";
         shippingLabel += $"{_customer.GetCustomerName()}\n{_customer.GetCustomerAddress().GetDispĺayAddress()}";
         return shippingLabel;
     }
-
-    /*public string GetPackingLabel(Product product)
+    // Method
+    public void GetDisplayOrder(Order order, string orderName)
     {
-        //A packing label should list the name and product id of each product in the order.
-        Console.WriteLine($"Product name: {product.GetProductName()} - Product id: {product._id}");
+        Console.WriteLine($"{orderName}:");
+        Console.WriteLine(order.GetPackingLabel());
+        Console.WriteLine(order.GetShippingLabel());
+        Console.WriteLine($"Total Price: ${order.GetTotalCostOfOrder():0.00}");
+        Console.WriteLine("_______________________________________________\n");
     }
-
-     public string GetShippingLabel(Customer customer)
-    {
-        //A shipping label should list the name and address of the customer.
-        Console.WriteLine($"Customer name: {customer._name} - Customer address: {customer._address}");
-    }*/
-
 }

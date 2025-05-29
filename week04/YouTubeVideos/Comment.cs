@@ -2,6 +2,7 @@ using System;
 
 public class Comment
 {
+    //Attributes
     public string _personName;
     public string _textComment;
 
@@ -12,6 +13,7 @@ public class Comment
         _textComment = text;
     }
 
+    // Method
     public void DisplayComment()
     {
         Console.WriteLine($"  - Person name: {_personName} - Comment: {_textComment}");

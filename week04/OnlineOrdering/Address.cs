@@ -2,15 +2,13 @@ using System;
 
 public class Address
 {
+    //Attributes
     private string _streetAddress;
     private string _city;
     private string _stateProvince;
     private string _country;
 
-    public Address()
-    {
-    }
-
+    //Constructor
     public Address(string address, string city, string state, string country)
     {
         _streetAddress = address;
@@ -18,46 +16,47 @@ public class Address
         _stateProvince = state;
         _country = country;
     }
-
+    // Method
     public string GetStreetAddress()
     {
         return _streetAddress;
     }
-
+    // Method
     public void SetStreetAddress(string streetAddress)
     {
         _streetAddress = streetAddress;
     }
-
+    // Method
     public string GetCity()
     {
         return _city;
     }
-
+    // Method
     public void SetCity(string city)
     {
         _city = city;
     }
-
+    // Method
     public string GetStateProvince()
     {
         return _stateProvince;
     }
-
+    // Method
     public void SetStateProvince(string stateProvince)
     {
         _stateProvince = stateProvince;
     }
+    // Method
     public string GetCountry()
     {
         return _country;
     }
-
+    // Method
     public void SetCountry(string country)
     {
         _country = country;
     }
-
+    // Method
     public bool GetIndicatorUSA()
     {
         bool indicatorUSA = false; //It's not from the USA
@@ -68,7 +67,7 @@ public class Address
         }
         return indicatorUSA;
     }
-
+    // Method
     public string GetDispĺayAddress()
     {
         //The address should have a method to return a string all of its fields together in one string 
