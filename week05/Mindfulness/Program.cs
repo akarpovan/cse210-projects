@@ -39,7 +39,8 @@ class Program
                     Console.WriteLine("Thank you. Goodbye!");
                     break;
                 default:
-                    Console.WriteLine("Invalid option. Please enter a number between 1 and 4.\n");
+                    Console.WriteLine("Invalid option. Please enter a number between 1 and 4.");
+                    Console.WriteLine("\n");
                     break;
             }
         }

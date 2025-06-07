@@ -25,7 +25,7 @@ public class ReflectingActivity : Activity
     };
 
     //Constructor
-    public ReflectingActivity()
+    public ReflectingActivity() : base ()
     {
         _name = "Reflecting";
         _description = "This activity will help you reflect on times in your life when you have shown strength and resilience. This will help you recognize the power you have and how you can use it in other aspects of your life.";
@@ -48,18 +48,46 @@ public class ReflectingActivity : Activity
 
     public void Run()
     {
+        DisplayStartingMessage();
+        int seconds = 5;
+
+        DisplayPrompt();
+        Console.WriteLine("When you have something in mind, press enter to continue.");
+        Console.ReadLine();
         
+        Console.WriteLine("Now ponder on each of the following questions as they relate to this experience.");
+        Console.Write("You may begin in: ");
+        ShowCountDown(seconds);
+
+        DateTime startTime = DateTime.Now;
+        DateTime endTime = startTime.AddSeconds(_duration);
+        
+        while (DateTime.Now < endTime)
+        {
+            DisplayQuestions();
+        }
+        
+        DisplayEndingMessage();
 
     }
 
     public void DisplayPrompt()
     {
-
+        string prompt = GenerateRandomPrompt();
+        Console.WriteLine("\n");
+        Console.WriteLine("Consider the following prompt:");
+        Console.WriteLine("\n");
+        Console.WriteLine($"--- {prompt} ---");
+        Console.WriteLine("\n");
     }
 
     public void DisplayQuestions()
     {
-
+        string question = GenerateRandomQuestion();
+        Console.Clear();
+        Console.WriteLine($"> {question}");
+        ShowSpinner(15);
+        Console.WriteLine();
     }
 
 }

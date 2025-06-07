@@ -15,7 +15,7 @@ public class ListingActivity : Activity
 
 
     //Constructor
-    public ListingActivity()
+    public ListingActivity() : base ()
     {
         _name = "Listing";
         _description = "This activity will help you reflect on the good things in your life by having you list as many things as you can in a certain area.";
@@ -24,6 +24,42 @@ public class ListingActivity : Activity
 
     public void Run()
     {
+        DisplayStartingMessage();
+
+        string prompt = GetRandomPrompt();
+        int seconds = 5;
+        
+        Console.WriteLine("List as many responses you can to the following prompt:");
+        Console.WriteLine("\n");
+        Console.WriteLine($"--- {prompt} ---");
+        Console.Write("You may begin in: ");
+        ShowCountDown(seconds);
+        Console.WriteLine("\n");
+
+        List<string> listFromUser = new();
+        DateTime startTime = DateTime.Now;
+        DateTime endTime = startTime.AddSeconds(_duration);
+        _count = 0;
+        
+        while (DateTime.Now < endTime)
+        {
+            Console.Write("> ");
+            string response = Console.ReadLine();
+            if (!string.IsNullOrWhiteSpace(response))
+            {
+                _listFromUser.Add(response);
+                _count++;
+            }
+        }
+        
+        Console.WriteLine("\n");
+        Console.WriteLine($"You listed {_count} items!");
+        List<string> userList = GetListFromUser();
+        foreach (string item in userList)
+        {
+            Console.WriteLine(item);
+        }
+        DisplayEndingMessage();
 
     }
 
