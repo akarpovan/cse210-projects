@@ -1,0 +1,4 @@
+0
+SimpleGoal:prueba,prueba,100,False
+EternalGoal:prueba,prueba,50
+ChecklistGoal:prueba,prueba,10,10,1000,0

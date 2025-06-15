@@ -12,19 +12,16 @@ public class EternalGoal : Goal
     public override void RecordEvent()
     {
 
-
     }
     //Method
     public override bool IsComplete()
     {
-        return true;
-
+        return false;
     }
     //Method
     public override string GetStringRepresentation()
     {
-        return "";
-
+        return $"EternalGoal:{GetShortName()},{GetDescription()},{GetPoints()}";
     }
 
 }

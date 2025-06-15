@@ -9,7 +9,7 @@ public abstract class Goal
     private string _shortName;
     private string _description;
     private int _points;
-    
+
     //Constructor
     public Goal(string name, string description, int points)
     {
@@ -25,12 +25,32 @@ public abstract class Goal
     //Method
     public abstract string GetStringRepresentation();
     //Method
-    public string GetDetailsString()
+    public virtual string GetDetailsString()
     {
-        return "";
-
+        string checkbox = "";
+        if (IsComplete() == true)
+        {
+            checkbox = "[X]";
+        }
+        else
+        {
+            checkbox = "[ ]";
+        }
+        return $"{checkbox} {_shortName} ({_description})";
+    }
+    
+    public string GetShortName()
+    {
+        return _shortName;
     }
 
+    public string GetDescription()
+    {
+        return _description;
+    }
 
-
+    public int GetPoints()
+    {
+        return _points;
+    }
 }

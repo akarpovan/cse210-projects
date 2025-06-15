@@ -14,19 +14,21 @@ public class SimpleGoal : Goal
     //Method
     public override void RecordEvent()
     {
-
-
+        if (_isComplete == false)
+        {
+            _isComplete = true;
+        }
     }
     //Method
     public override bool IsComplete()
     {
-        return true;
+        return _isComplete;
 
     }
     //Method
     public override string GetStringRepresentation()
     {
-        return "";
+        return $"SimpleGoal:{GetShortName()},{GetDescription()},{GetPoints()},{_isComplete}";
 
     }
 
